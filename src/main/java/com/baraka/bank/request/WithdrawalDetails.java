@@ -9,7 +9,7 @@ import lombok.*;
 @ToString
 public class WithdrawalDetails {
 
-	private Long fromAccountNumber;
-	
-	private Double withdrawalAmount;
+    private Long fromAccountNumber;
+
+    private Double withdrawalAmount;
 }

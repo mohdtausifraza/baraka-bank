@@ -9,9 +9,9 @@ import lombok.*;
 @ToString
 public class InternationalTransferDetails {
 
-	private Long fromAccountNumber;
-	
-	private InternationalToAccountDetails toAccountNumber;
-	
-	private Double transferAmount;
+    private Long fromAccountNumber;
+
+    private InternationalToAccountDetails toAccountNumber;
+
+    private Double transferAmount;
 }

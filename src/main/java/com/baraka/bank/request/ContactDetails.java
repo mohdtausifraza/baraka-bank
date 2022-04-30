@@ -10,9 +10,9 @@ import lombok.*;
 @ToString
 public class ContactDetails {
 
-	private String emailId;
-	
-	private String homePhone;
-	
-	private String workPhone;
+    private String emailId;
+
+    private String homePhone;
+
+    private String workPhone;
 }

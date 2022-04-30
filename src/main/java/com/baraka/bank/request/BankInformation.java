@@ -10,11 +10,11 @@ import lombok.*;
 @ToString
 public class BankInformation {
 
-	private String branchName;
-	
-	private Integer branchCode;
-	
-	private AddressDetails branchAddress;
-	
-	private Integer routingNumber;
+    private String branchName;
+
+    private Integer branchCode;
+
+    private AddressDetails branchAddress;
+
+    private Integer routingNumber;
 }

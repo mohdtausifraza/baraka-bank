@@ -14,17 +14,17 @@ import java.util.Date;
 @ToString
 public class CreateAccountResponse {
 
-	private Long accountNumber;
-	
-	private BankInformation bankInformation;
+    private Long accountNumber;
 
-	private CustomerDetails customerDetails;
-	
-	private String accountStatus;
-	
-	private String accountType;
-	
-	private Double accountBalance;
-	
-	private Date accountCreated;
+    private BankInformation bankInformation;
+
+    private CustomerDetails customerDetails;
+
+    private String accountStatus;
+
+    private String accountType;
+
+    private Double accountBalance;
+
+    private Date accountCreated;
 }

@@ -13,7 +13,7 @@ public class ResponseMapper {
     @Autowired
     public BankingServiceHelper bankingServiceHelper;
 
-    public CreateAccountResponse getAccountDetails(Account account){
+    public CreateAccountResponse getAccountDetails(Account account) {
         return CreateAccountResponse.builder()
                 .accountBalance(account.getAccountBalance())
                 .accountCreated(account.getCreateDateTime())
@@ -25,7 +25,7 @@ public class ResponseMapper {
                 .build();
     }
 
-    public DeleteAccountResponse getDeleteAccountResponse(Account account){
+    public DeleteAccountResponse getDeleteAccountResponse(Account account) {
         return DeleteAccountResponse.builder()
                 .accountBalance(account.getAccountBalance())
                 .accountCreated(account.getCreateDateTime())

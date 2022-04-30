@@ -14,18 +14,18 @@ import java.util.Date;
 @ToString
 public class DeleteAccountResponse {
 
-	private Long accountNumber;
+    private Long accountNumber;
 
-	private BankInformation bankInformation;
+    private BankInformation bankInformation;
 
-	private CustomerDetails customerDetails;
+    private CustomerDetails customerDetails;
 
-	private String accountStatus;
+    private String accountStatus;
 
-	private String accountType;
+    private String accountType;
 
-	private Double accountBalance;
+    private Double accountBalance;
 
-	private Date accountCreated;
+    private Date accountCreated;
 
 }

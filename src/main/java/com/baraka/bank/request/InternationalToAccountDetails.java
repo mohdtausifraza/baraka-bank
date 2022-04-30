@@ -9,15 +9,15 @@ import lombok.*;
 @ToString
 public class InternationalToAccountDetails {
 
-	private Long fromAccountNumber;
-	
-	private String bankName;
+    private Long fromAccountNumber;
 
-	private String bankCode;
+    private String bankName;
 
-	private String IfscCode;
+    private String bankCode;
 
-	private String bankBranch;
-	
-	private Double transferAmount;
+    private String IfscCode;
+
+    private String bankBranch;
+
+    private Double transferAmount;
 }

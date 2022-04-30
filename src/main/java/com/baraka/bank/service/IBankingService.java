@@ -1,11 +1,11 @@
 package com.baraka.bank.service;
 
-import java.util.List;
-
 import com.baraka.bank.request.*;
 import com.baraka.bank.response.CreateAccountResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+
+import java.util.List;
 
 public interface IBankingService {
 
@@ -26,17 +26,6 @@ public interface IBankingService {
     List<AccountInformation> findAll();
 
 
-
-
-
-
-
-
-
-
-
-
-    
 //    public CustomerDetails findByCustomerNumber(Long customerNumber);
 //
 //    public ResponseEntity<Object> updateCustomer(CustomerDetails customerDetails, Long customerNumber);
@@ -50,5 +39,5 @@ public interface IBankingService {
 ////    public ResponseEntity<Object> transferDetails(TransferDetails transferDetails, Long customerNumber);
 //
 //    public List<TransactionDetails> findTransactionsByAccountNumber(Long accountNumber);
-    
+
 }

@@ -1,8 +1,8 @@
 package com.baraka.bank.request;
 
-import java.util.Date;
-
 import lombok.*;
+
+import java.util.Date;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -12,11 +12,11 @@ import lombok.*;
 @ToString
 public class TransactionDetails {
 
-	private Long accountNumber;
-	
-	private Date txDateTime;
-	
-	private String txType;
-	
-	private Double txAmount;
+    private Long accountNumber;
+
+    private Date txDateTime;
+
+    private String txType;
+
+    private Double txAmount;
 }

@@ -1,12 +1,12 @@
 # Baraka Banking Application using Java8, Spring Boot, Spring Security and H2 DB
 
-RESTful API to simulate simple banking operations. 
+RESTful API to simulate simple banking operations.
 
 ## Requirements
 
-*	CRUD operations for customers and accounts.
-*	Support new account creation, delete account , find All Account List, deposits, withdrawals, transfer, International transfers.
-
+* CRUD operations for customers and accounts.
+* Support new account creation, delete account , find All Account List, deposits, withdrawals, transfer, International
+  transfers.
 
 ## Getting Started
 
@@ -16,6 +16,7 @@ RESTful API to simulate simple banking operations.
 https://github.com/mohdtausifraza/baraka-bank.git
 
 ```
+
 2. Enable Lombok support on your IDE
 
 Refer to the following link for instructions:
@@ -24,6 +25,7 @@ Refer to the following link for instructions:
 https://projectlombok.org/setup/eclipse
 
 ```
+
 3. Open IDE of your choice and Import as existing maven project in your workspace
 
 ```
@@ -32,8 +34,8 @@ https://projectlombok.org/setup/eclipse
 - If using STS, Run As Spring Boot App
 
 ```
-4. Default port for the api is 8080
 
+4. Default port for the api is 8080
 
 ### Prerequisites
 
@@ -69,8 +71,8 @@ http://localhost:8080/baraka-bank/swagger-ui.html
 
 ## H2 In-Memory Database
 
-Make sure to use jdbc:h2:mem:testdb as your jdbc url. If you intend to you use custom database name, please
-define datasource properties in application.yml
+Make sure to use jdbc:h2:mem:testdb as your jdbc url. If you intend to you use custom database name, please define
+datasource properties in application.yml
 
 ```
 http://localhost:8080/baraka-bank/h2-console/

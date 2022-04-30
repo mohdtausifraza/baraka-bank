@@ -8,8 +8,8 @@ import lombok.*;
 @Setter
 @ToString
 public class DepositDetails {
-	
-	private Long toAccountNumber;
-	
-	private Double depositAmount;
+
+    private Long toAccountNumber;
+
+    private Double depositAmount;
 }

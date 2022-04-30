@@ -1,29 +1,27 @@
 package com.baraka.bank.service;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
-
+import com.baraka.bank.entity.Account;
+import com.baraka.bank.entity.Transaction;
 import com.baraka.bank.mapper.ResponseMapper;
+import com.baraka.bank.repository.AccountRepository;
+import com.baraka.bank.repository.CustomerRepository;
+import com.baraka.bank.repository.TransactionRepository;
 import com.baraka.bank.request.*;
 import com.baraka.bank.response.CreateAccountResponse;
 import com.baraka.bank.response.DeleteAccountResponse;
+import com.baraka.bank.service.helper.BankingServiceHelper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import com.baraka.bank.entity.Account;
-import com.baraka.bank.entity.Transaction;
-import com.baraka.bank.repository.AccountRepository;
-import com.baraka.bank.repository.CustomerAccountXRefRepository;
-import com.baraka.bank.repository.CustomerRepository;
-import com.baraka.bank.repository.TransactionRepository;
-import com.baraka.bank.service.helper.BankingServiceHelper;
 import org.springframework.web.bind.annotation.PathVariable;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Optional;
 
 @Slf4j
 @Service
@@ -78,14 +76,14 @@ public class BankingServiceImpl implements IBankingService {
         Account toAccountEntity = null;
 
         // Get ACCOUNT info Info where we need to deposit money
-        log.info("Getting the Details of the AccountNumber : {}",depositDetails.getToAccountNumber());
+        log.info("Getting the Details of the AccountNumber : {}", depositDetails.getToAccountNumber());
         Optional<Account> toAccountEntityOpt = accountRepository.findByAccountNumber(depositDetails.getToAccountNumber());
         if (toAccountEntityOpt.isPresent()) {
-            log.info("AccountNumber : {} is found",depositDetails.getToAccountNumber());
+            log.info("AccountNumber : {} is found", depositDetails.getToAccountNumber());
             toAccountEntity = toAccountEntityOpt.get();
         } else {
             // If Account where we want to deposit money not exist, 404 Bad Request
-            log.info("AccountNumber : {} is found",depositDetails.getToAccountNumber());
+            log.info("AccountNumber : {} is found", depositDetails.getToAccountNumber());
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Account Number:" + depositDetails.getToAccountNumber() + " not found.");
         }
 
@@ -95,10 +93,10 @@ public class BankingServiceImpl implements IBankingService {
             toAccountEntity.setAccountBalance(toAccountEntity.getAccountBalance() + depositDetails.getDepositAmount());
             toAccountEntity.setUpdateDateTime(new Date());
 
-            try{
+            try {
                 accountRepository.save(toAccountEntity);
-            }catch (Exception e){
-                log.info("Exception occurred while saving the details {}",e.getStackTrace());
+            } catch (Exception e) {
+                log.info("Exception occurred while saving the details {}", e.getStackTrace());
             }
             // Create transaction for Deposit to Account
             Transaction toTransaction = bankingServiceHelper.createDepositTransaction(depositDetails, toAccountEntity.getAccountNumber(), "CREDIT");
@@ -119,10 +117,10 @@ public class BankingServiceImpl implements IBankingService {
         Account fromAccountEntity = null;
 
         // Get ACCOUNT info Info from where we need to withdraw money
-        log.info("Getting the Details of the AccountNumber : {}",withdrawalDetails.getFromAccountNumber());
+        log.info("Getting the Details of the AccountNumber : {}", withdrawalDetails.getFromAccountNumber());
         Optional<Account> toAccountEntityOpt = accountRepository.findByAccountNumber(withdrawalDetails.getFromAccountNumber());
         if (toAccountEntityOpt.isPresent()) {
-            log.info("AccountNumber : {} is found",withdrawalDetails.getFromAccountNumber());
+            log.info("AccountNumber : {} is found", withdrawalDetails.getFromAccountNumber());
             fromAccountEntity = toAccountEntityOpt.get();
         } else {
             // If Account where we want to deposit money not exist, 404 Bad Request
@@ -140,10 +138,10 @@ public class BankingServiceImpl implements IBankingService {
                 fromAccountEntity.setAccountBalance(fromAccountEntity.getAccountBalance() - withdrawalDetails.getWithdrawalAmount());
                 fromAccountEntity.setUpdateDateTime(new Date());
 
-                try{
+                try {
                     accountRepository.save(fromAccountEntity);
-                }catch (Exception e){
-                    log.info("Exception occurred while saving the details {}",e.getStackTrace());
+                } catch (Exception e) {
+                    log.info("Exception occurred while saving the details {}", e.getStackTrace());
                 }
 
                 // Create transaction for Withdrawal from Account
@@ -301,23 +299,23 @@ public class BankingServiceImpl implements IBankingService {
      */
     public ResponseEntity<Object> deleteAccount(@PathVariable Long accountNumber) {
 
-        log.info("Getting the details of the AccountNumber : {}",accountNumber);
+        log.info("Getting the details of the AccountNumber : {}", accountNumber);
         Optional<Account> managedAccountEntityOpt = accountRepository.findByAccountNumber(accountNumber);
 
         Account managedAccountEntity;
         if (managedAccountEntityOpt.isPresent()) {
             log.info("Account Details Found");
             managedAccountEntity = managedAccountEntityOpt.get();
-            try{
-                log.info("Deleting The AccountNumber : {}",accountNumber);
+            try {
+                log.info("Deleting The AccountNumber : {}", accountNumber);
                 accountRepository.delete(managedAccountEntity);
-            }catch (Exception e){
-                log.info("Exception occurred while deleting the AccountNumber: {}",accountNumber);
+            } catch (Exception e) {
+                log.info("Exception occurred while deleting the AccountNumber: {}", accountNumber);
             }
             DeleteAccountResponse response = responseMapper.getDeleteAccountResponse(managedAccountEntity);
             return ResponseEntity.status(HttpStatus.OK).body(response);
         } else {
-            log.info("Account Details Not Found for AccountNumber : {}",accountNumber);
+            log.info("Account Details Not Found for AccountNumber : {}", accountNumber);
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Account does not exist.");
         }
     }
@@ -332,14 +330,14 @@ public class BankingServiceImpl implements IBankingService {
 
         log.info("Get List of Account details Request");
         List<AccountInformation> allAccountInformations = new ArrayList<>();
-        Iterable<Account> accountsList=null;
+        Iterable<Account> accountsList = null;
         try {
             log.info("Getting The List of Account Details");
-            accountsList= accountRepository.findAll();
-        }catch (Exception e){
+            accountsList = accountRepository.findAll();
+        } catch (Exception e) {
             log.info("Exception Occured while getting the list of account details");
         }
-        if(accountsList!=null) {
+        if (accountsList != null) {
             accountsList.forEach(account -> {
                 allAccountInformations.add(bankingServiceHelper.convertToAccountDomain(account));
             });
