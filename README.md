@@ -13,7 +13,7 @@ RESTful API to simulate simple banking operations.
 1. Checkout the project from GitHub
 
 ```
-https://github.com/mohdtausifraza/DataStructureAndAlgo
+https://github.com/mohdtausifraza/baraka-bank.git
 
 ```
 2. Enable Lombok support on your IDE
