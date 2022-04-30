@@ -1,0 +1,13 @@
+server.port: 8080
+server.servlet.context-path: /baraka-bank
+
+# You can change your Username and Password.
+# Also we can give UserName and Password from Vault or SpringCloud Config
+spring.security.user.name: user
+spring.security.user.password: password
+
+# Enabling H2 Console
+spring:
+  h2:
+    console:
+      enabled: true
